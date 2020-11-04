@@ -1,0 +1,137 @@
+
+{# templates/Advert/index.html  #}
+
+
+{% extends "layout.html" %}
+
+{% block  title %} {{parent () }} -Index {% endblock%}
+
+{% block body %}
+
+<div id ="listebutton"> <div> <button id="parametre" 
+onclick  = "par.afficheparametre(
+this.id,'./parametre?parametre=parametre')" class="b4">parametre</button></div> 
+
+<div>  <button id ="nextcloud" onclick = "window.location = './parametre?parametre=nextcloud&nextcloud=nextcloud'"  class ="b4">nextcloud</button></div>   </div>
+
+</br>
+{% if id == "parametre" %}
+
+<div id = "parametre" class= "b3">
+<table id ="tab">
+
+<caption>
+parametre
+</caption>
+
+<tr>
+
+
+<td>
+<center> pseudo : {{log.pseudo}} </center>
+</td>
+
+</tr>
+  
+
+<td>
+
+<center> <button  onclick ="par.display('changepass')"> changer de mot de pass </button></center>
+
+  </td>
+
+</tr>
+
+<tr>
+
+<td> <center> email: {{log.email }}</center> </td>
+
+
+</tr>
+
+</table>
+
+</div>
+
+
+
+
+{% endif %}
+
+</td>
+</tr>
+
+</table>
+
+</div>
+
+{% if id == "nextcloud" %}
+<div id="nextcloud" class="b3" >
+
+<div id ="perso">
+
+<center>
+
+<button id = "buttonnextcloud" onclick  ="window.location = './parametre?parametre=nextcloud&nextcloud=nextcloud'">
+ compte  nextcloud
+</button>
+
+<button id = "buttonthier" onclick = "window.location= './parametre/?parametre=nextcloud&nextcloud=thier'">compte thier</button>
+
+</center>
+
+
+ </div>
+
+<div>
+<table>
+
+ 
+{% if nextcloud == "nextcloud" %}
+
+</br>
+
+   <tr> <th>  pseudo </th> <td> {{log.pseudo }} </td> </tr>
+<tr> <th> date de fin d'abonoment</th> <td> {{log.date }} </td> </tr>
+
+{% endif %}
+
+
+</table>
+
+<table>
+
+
+{% if nextcloud == "thier" %}
+
+
+
+  </br>
+
+
+
+ {% for i in i..countnextcloud%}
+
+
+ <tr> <td> <center> {{ thier[i] }}</center> </td>
+
+<td><center>{{ alldate[i] }} </center> </td> </tr> 
+
+{% endfor %}
+
+
+</tr>
+
+{% endif %}
+</table>
+
+</div>
+
+ </div>
+
+{%endif%}
+
+
+{% endblock %}
+
+

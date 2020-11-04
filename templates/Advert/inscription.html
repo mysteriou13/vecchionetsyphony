@@ -1,0 +1,47 @@
+
+{# templates/Advert/inscription.html.twig #}
+
+{%  extends "layout.html" %}
+
+{% block body %}
+
+</br>
+
+<div>
+<center>
+
+<div id = "b3"> inscription</div>
+
+</br>
+
+<div id = "b5">
+
+
+{{form_start(inscription) }}
+<div>
+{{ form_row(inscription.login) }}
+{{loginpris}}
+</div>
+
+<div>
+{{ form_row(inscription.password) }}
+</div>
+
+<div>
+{{ form_row(inscription.email) }}
+{{ emailpris }}
+</div>
+
+<div>
+{{ form_row(inscription.check) }}
+</div>
+
+{{form_end(inscription)  }}
+
+</div>
+</center>
+</div>
+
+{% endblock %}
+
+

@@ -1,0 +1,110 @@
+ {# templates/layout.html #}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}Plateforme d'annonces{% endblock %}</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href ="{{ asset('css/style.css') }}" type = "text/css" rel = "stylesheet">
+
+</head>
+
+<header>
+<h1>
+<center>
+<u>vecchionet.com</u>
+
+</br>
+ le cloud  respectueux de la  vie priv&eacute;
+</h1>
+
+</center>
+
+
+<div class = "divflex">
+
+<div class = "divheader"> <a href  = "./index"> accueil </a> </div>
+
+{% if app.session.get('username') is empty %}
+
+<div class = "divheader"> <a href ="./inscription"> inscription </a> </div> <div class = "divheader"> <a href = "./nextcloud"> nextcloud </a> </div>
+
+{% endif %}
+
+<div class = "divheader"> <a href = "./CGU"> CGU </a> </div> <div class = "divheader"> <a href = "./legal"> mention légal </a></div>
+
+<div class = "divheader"> <a href = "./contact"> contact </a></div>
+
+{% if  app.session.get('username') is not empty  %}
+
+<div class= "divheader">  <a href = "./parametre?parametre=parametre"> parametre </a> </div>
+
+<div class = "divheader"> <a href  = "./deconnection"> deconnection </a> </div>
+
+{% endif %}
+</div>
+
+{% if app.session.get('username') is empty %}
+</br>
+<div>
+ 
+  {{ form_start(form) }}
+
+  <div id = "formconnection"  style = "display:flex">
+<div>
+ {{ form_row(form.login) }}
+</div>
+
+<div>
+ {{ form_row(form.password) }}
+</div>
+
+
+{{ form_end(form) }}
+
+
+<div>
+<label> &nbsp; <a href = "./oublipass">mot de pass oublier </a> </label>
+</div>
+{% endif %}
+
+
+
+
+</div>
+
+<div style = "color:white">
+
+<center> {{error}} </center>
+
+</div>
+
+
+   </header>
+
+
+
+<body>
+  {% block body %}
+  {% endblock %}
+
+
+   <script src="{{ asset('./script/class/parametre.js') }}"></script>
+
+
+    <script src="{{ asset('./script/parametre.js') }}"></script>
+
+
+
+
+
+
+<footer>
+footer
+</footer>
+
+</body>
+
+</html>

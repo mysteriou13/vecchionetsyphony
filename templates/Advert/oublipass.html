@@ -1,0 +1,45 @@
+
+
+{%extends "layout.html" %}
+
+{% block title %} {{ parent() }} - Index {% endblock %}
+
+{% block body%}
+
+</br>
+
+<table>
+ <caption id = "b3">
+<center>
+demande de nouveau mot de pass
+</center>
+</caption>
+</table>
+
+<center>
+
+<div style = "display:flex; justify-content:center">
+
+<div>
+ {{ form_start(oubli) }} 
+</div>
+
+<div>
+ {{ form_row(oubli.email) }}
+</div>
+
+<div>
+ {{form_row(oubli.submit) }} 
+</div>
+
+<div>
+ {{ form_end(oubli)}}
+</div>
+
+</div>
+
+{{erroroublicpass}}
+
+</center>
+
+{% endblock %}
