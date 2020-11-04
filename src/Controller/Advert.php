@@ -43,6 +43,7 @@ $input = new input();
  $formlogin->handleRequest($request);
  $forminscription->handleRequest($request);
 
+     
      $pseudo = $formlogin->get('login')->getData();
      $pass = $formlogin->get('password')->getData();
      $loginpris = null;
@@ -55,7 +56,9 @@ $input = new input();
      $countnextcloud = null;
      $oublipass = $this->oublipass($input,$request);
      $erroroublicpass = null;
-      
+    $page = $this->page($session,$id);
+
+  
     $idparametre = $request->get('parametre');
     $idnextcloud = $request->get('nextcloud');
     $this->myVal = 0;
@@ -139,13 +142,7 @@ $this->liennewpass($oublipass->get('email')->getData(),$connect,$mail);
      $session->set('username',null);  
 
   }
-     $page = './Advert/'.$id.'.html';
-
-      if($session->get('username') != null && $id == "inscription"){
- 
-      $page = "./Advert/index.html";
- 
-     }
+    
 
    if($session->get('username') == null && $id == "parametre"){
 
@@ -180,7 +177,20 @@ $alldate = $p->getallcreateur("date",$session);
 
     }
 
+ public function page($session,$id){
+
+
+ $page = './Advert/'.$id.'.html';
+
+      if($session->get('username') != null && $id == "inscription"){
  
+      $page = "./Advert/index.html";
+ 
+     }
+
+return $page;
+
+ } 
 
 public function afficheparametre($session,$request,$p,$log,$password){
 
