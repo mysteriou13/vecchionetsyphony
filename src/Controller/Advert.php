@@ -70,9 +70,7 @@ $input = new input();
 
    $p = new parametre($session->get('username'),$log,$password);     
 
-  $afficheparametre = $this->afficheparametre($session,$request,
-$p,
-         $log,$password);
+  $afficheparametre = $this->afficheparametre($session,$request,$p,$log,$password);
 
 
    if($request->getMethod() == "POST" ){
