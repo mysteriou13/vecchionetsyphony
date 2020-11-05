@@ -13,9 +13,6 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use App\database\formconnection;
-
-use App\database\forminscription;
 use App\Entity\input;
 use App\database\connect;
 use App\database\parametre;
@@ -36,14 +33,13 @@ $error = null;
 
 $input = new input();
 
- $formlogin = $this->createForm(formconnection::class, $input);
+ $formlogin = $this->login($input,$request);
  
- $forminscription = $this->createForm(forminscription::class, $input);
+ $forminscription = $this->inscription($input,$request);
 
- $formlogin->handleRequest($request);
- $forminscription->handleRequest($request);
+  $oublipass = $this->oublipass($input,$request);
 
-     
+    
      $pseudo = $formlogin->get('login')->getData();
      $pass = $formlogin->get('password')->getData();
      $loginpris = null;
@@ -54,7 +50,8 @@ $input = new input();
      $alldate = null;
      $nbcreateur =null;
      $countnextcloud = null;
-     $oublipass = $this->oublipass($input,$request);
+
+
      $erroroublicpass = null;
     $page = $this->page($session,$id);
 
@@ -254,12 +251,40 @@ $mail->mails($oubli,"mot de pass oublier", $liennewpass);
 
   }
 
+public function login($input,$request){
+
+  $login = $this->createFormBuilder($input)
+          ->add('login', TextType::class)
+          ->add('password', PasswordType::class)
+          ->add('connection', SubmitType::class)
+          ->getForm();
+
+return $login->handleRequest($request);
+
+ }
+
+ public function inscription($input,$request){
+
+  $inscription = $this->createFormBuilder($input)
+            ->add('login', TextType::class)
+            ->add('password', PasswordType::class)
+            ->add('email', EmailType::class)
+            ->add('check', CheckboxType::class, ['label' =>'accepter les CGU'] )
+            ->add('inscription', SubmitType::class)
+            ->getForm();
+ 
+   return $inscription->handleRequest($request);
+
+
+
+ } 
+ 
   public function oublipass($input,$request){
 
-$oublipass = $this->createFormBuilder($input)
- ->add('email', EmailType::class)
- ->add('submit', SubmitType::class,['label'=> 'envoyer'])
- ->getForm();
+ $oublipass = $this->createFormBuilder($input)
+            ->add('email', EmailType::class)
+            ->add('submit', SubmitType::class,['label'=> 'envoyer'])
+            ->getForm();
 
 return $oublipass->handleRequest($request);
 
