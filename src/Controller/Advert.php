@@ -108,7 +108,6 @@ $input = new input();
 
    }
 
-:
    if($selectpseudo == 0 && $selectemail == 0){ 
  
      $connect->inscription($pseudo,$pass,$email);
