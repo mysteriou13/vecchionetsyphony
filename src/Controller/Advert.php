@@ -93,7 +93,6 @@ $input = new input();
      $email = $forminscription->get('email')->getData();
     
   
-      $connect->inscription($pseudo,$pass,$email);
  
     $selectpseudo =  $connect->selectcount("COUNT(*)pseudo ","membre","pseudo",$pseudo)['pseudo'];
 
@@ -107,6 +106,13 @@ $input = new input();
   if($selectemail == 1){
  $emailpris = " erreur email pris";
 
+   }
+
+:
+   if($selectpseudo == 0 && $selectemail == 0){ 
+ 
+     $connect->inscription($pseudo,$pass,$email);
+   
    }
 
    }
