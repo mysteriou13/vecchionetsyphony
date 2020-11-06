@@ -40,8 +40,8 @@ $input = new input();
   $oublipass = $this->oublipass($input,$request);
 
     
-     $pseudo = $formlogin->get('login')->getData();
-     $pass = $formlogin->get('password')->getData();
+     $pseudo = null;
+     $pass = null;
      $loginpris = null;
      $emailpris = null;
      $allcreateur = null;
@@ -70,20 +70,14 @@ $input = new input();
   $afficheparametre = $this->afficheparametre($session,$request,$p,$log,$password);
 
 
-   if($request->getMethod() == "POST" ){
+  if ($formlogin->isSubmitted() && $formlogin->isValid() && $request->getMethod() == "POST") {
 
-    $pseudo = $formlogin->get('login')->getData();
+   $pseudo = $formlogin->get('login')->getData();
     $pass = $formlogin->get('password')->getData();
 
-
-  if ($formlogin->isSubmitted() && $formlogin->isValid()) {
-    
+ 
    $connect->login($pseudo,$pass,$session,$log,$password);  
     
-    $pseudo = $formlogin->get('login')->getData();
-    $pass = $formlogin->get('password')->getData();
-
-
     }
    
      if($forminscription->isSubmitted() && $forminscription->isValid()) {
@@ -116,7 +110,6 @@ $input = new input();
 
    }
 
-}
 
 if($_SERVER['HTTP_HOST'] == "localhost"){
 
