@@ -33,7 +33,7 @@ $error = null;
 
 $input = new input();
 
- $formlogin = $this->login($input,$request);
+ $formlogin = $this->fromlogin($input,$request);
  
  $forminscription = $this->inscription($input,$request);
 
@@ -249,7 +249,7 @@ $mail->mails($oubli,"mot de pass oublier", $liennewpass);
 
   }
 
-public function login($input,$request){
+public function fromlogin($input,$request){
 
   $login = $this->createFormBuilder($input)
           ->add('login', TextType::class)
