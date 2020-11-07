@@ -69,25 +69,15 @@ $input = new input();
 
   $afficheparametre = $this->afficheparametre($session,$request,$p,$log,$password);
 
+   $this->formlogin($formlogin,$connect,$session,$log,$password);
 
-  if ($formlogin->isSubmitted() && $formlogin->isValid() && $request->getMethod() == "POST") {
-
-   $pseudo = $formlogin->get('login')->getData();
-    $pass = $formlogin->get('password')->getData();
-
- 
-   $connect->login($pseudo,$pass,$session,$log,$password);  
-    
-    }
-   
+  
      if($forminscription->isSubmitted() && $forminscription->isValid()) {
    
      $pseudo = $forminscription->get('login')->getData();
      $pass = $forminscription->get('password')->getData();
      $email = $forminscription->get('email')->getData();
-    
-  
- 
+     
     $selectpseudo =  $connect->selectcount("COUNT(*)pseudo ","membre","pseudo",$pseudo,$log,$password)['pseudo'];
 
     $selectemail =  $connect->selectcount("COUNT(*)email ","membre","pseudo",$pseudo,$log,$password)['email'];
@@ -170,6 +160,23 @@ $alldate = $p->getallcreateur("date",$session);
 
     }
 
+
+  public function formlogin($formlogin,$connect,$session,$log,$password){
+
+   if ($formlogin->isSubmitted() && $formlogin->isValid()) {
+
+    $pseudo = $formlogin->get('login')->getData();
+    $pass = $formlogin->get('password')->getData();
+
+ 
+   $connect->login($pseudo,$pass,$session,$log,$password);  
+    
+    }
+  
+
+  }
+
+
  public function page($session,$id){
 
 
@@ -248,6 +255,9 @@ $mail->mails($oubli,"mot de pass oublier", $liennewpass);
 }
 
   }
+
+
+
 
 public function fromlogin($input,$request){
 
