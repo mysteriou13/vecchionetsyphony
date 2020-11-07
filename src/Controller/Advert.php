@@ -86,18 +86,7 @@ if($_SERVER['HTTP_HOST'] == "localhost"){
 $this->oublipassword($connect,$mail,$oublipass,$log,$password);
 
 
-   if($id == "deconnection" && $request->getMethod() != 'POST'){
- 
-     $session->set('username',null);  
-
-  }
-    
-
-   if($session->get('username') == null && $id == "parametre"){
-
-
-    return $this->redirect("./index");
-  }
+$this->deconnect($id,$request,$session); 
 
 
 $allcreateur = $p->getallcreateur("pseudo",$session);
@@ -126,6 +115,23 @@ $alldate = $p->getallcreateur("date",$session);
 
     }
 
+public function deconnect($id,$request,$session){
+
+   if($id == "deconnection" && $request->getMethod() != 'POST'){
+ 
+     $session->set('username',null);  
+
+  }
+    
+
+   if($session->get('username') == null && $id == "parametre"){
+
+    return $this->redirect("./index");
+
+  }
+
+
+}
 
 public function oublipassword($connect,$mail,$oublipass,$log,$password){
 
