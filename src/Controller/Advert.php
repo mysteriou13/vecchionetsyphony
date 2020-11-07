@@ -50,10 +50,8 @@ $input = new input();
      $alldate = null;
      $nbcreateur =null;
      $countnextcloud = null;
-
-
      $erroroublicpass = null;
-    $page = $this->page($session,$id);
+     $page = $this->page($session,$id);
 
   
     $idparametre = $request->get('parametre');
@@ -70,7 +68,7 @@ $input = new input();
   $afficheparametre = $this->afficheparametre($session,$request,$p,$log,$password);
 
    $this->formlogin($formlogin,$connect,$session,$log,$password);
-
+   $this->forminscription($forminscription,$connect,$log,$password);
   
      if($forminscription->isSubmitted() && $forminscription->isValid()) {
    
@@ -160,6 +158,41 @@ $alldate = $p->getallcreateur("date",$session);
 
     }
 
+
+
+  public function forminscription($forminscription,$connect,$log,$password){
+
+    if($forminscription->isSubmitted() && $forminscription->isValid()) {
+   
+     $pseudo = $forminscription->get('login')->getData();
+     $pass = $forminscription->get('password')->getData();
+     $email = $forminscription->get('email')->getData();
+     
+    $selectpseudo =  $connect->selectcount("COUNT(*)pseudo ","membre","pseudo",$pseudo,$log,$password)['pseudo'];
+
+    $selectemail =  $connect->selectcount("COUNT(*)email ","membre","pseudo",$pseudo,$log,$password)['email'];
+
+  if($selectpseudo == 1){
+  $loginpris = " erreur pseudo pris";
+
+   }    
+
+  if($selectemail == 1){
+ $emailpris = " erreur email pris";
+
+   }
+
+   if($selectpseudo == 0 && $selectemail == 0){ 
+ 
+     $connect->inscription($pseudo,$pass,$email,$log,$password);
+   
+   }
+
+   }
+
+
+  }
+ 
 
   public function formlogin($formlogin,$connect,$session,$log,$password){
 
