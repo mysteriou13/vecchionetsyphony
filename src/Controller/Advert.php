@@ -35,7 +35,7 @@ $input = new input();
 
  $formlogin = $this->fromlogin($input,$request);
  
- $forminscription = $this->inscription($input,$request);
+ $forminscription = $this->frominscription($input,$request);
 
   $oublipass = $this->oublipass($input,$request);
 
@@ -88,9 +88,9 @@ $input = new input();
     
   
  
-    $selectpseudo =  $connect->selectcount("COUNT(*)pseudo ","membre","pseudo",$pseudo)['pseudo'];
+    $selectpseudo =  $connect->selectcount("COUNT(*)pseudo ","membre","pseudo",$pseudo,$log,$password)['pseudo'];
 
-    $selectemail =  $connect->selectcount("COUNT(*)email ","membre","pseudo",$pseudo)['email'];
+    $selectemail =  $connect->selectcount("COUNT(*)email ","membre","pseudo",$pseudo,$log,$password)['email'];
 
   if($selectpseudo == 1){
   $loginpris = " erreur pseudo pris";
@@ -104,7 +104,7 @@ $input = new input();
 
    if($selectpseudo == 0 && $selectemail == 0){ 
  
-     $connect->inscription($pseudo,$pass,$email);
+     $connect->inscription($pseudo,$pass,$email,$log,$password);
    
    }
 
@@ -261,7 +261,7 @@ return $login->handleRequest($request);
 
  }
 
- public function inscription($input,$request){
+ public function frominscription($input,$request){
 
   $inscription = $this->createFormBuilder($input)
             ->add('login', TextType::class)

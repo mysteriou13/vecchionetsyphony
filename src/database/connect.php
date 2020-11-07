@@ -103,10 +103,10 @@ $password)['pseudo'];
       }
 
 }
-  public function inscription($pseudo,$pass,$email){
+  public function inscription($pseudo,$pass,$email,$log,$password){
 
-      $count  =   $this->selectcount("COUNT(*)pseudo ","membre","pseudo",$pseudo)['pseudo'];
-      $countemail  =   $this->selectcount("COUNT(*)email ","membre","pseudo",$pseudo)['email'];
+      $count  =   $this->selectcount("COUNT(*)pseudo ","membre","pseudo",$pseudo,$log,$password)['pseudo'];
+      $countemail  =   $this->selectcount("COUNT(*)email ","membre","pseudo",$pseudo,$log,$password)['email'];
 
 
   if($count == 0  && $countemail == 0){
@@ -125,7 +125,7 @@ $length =  rand(10, 50);
 
 $sql = 'INSERT INTO membre VALUES(NULL,"'.$pseudo.'","'.$pass.'","'.$email.'","'.$date.'", "'.$verifemail.'","'.$tokenmail.'")';
 
-$con =  $this->setconnect()->prepare($sql);
+$con =  $this->setconnect($log,$password)->prepare($sql);
 
 $con->bindValue(1, $pseudo);
 $con->bindValue(1, $pass);
