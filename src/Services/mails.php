@@ -32,10 +32,6 @@ return $this->passmail;
 
 public function mails($adress,$subject,$message){
 
-
-
-require_once("../admin/connectmail.php");  
-
   $this->IsSMTP();
   $this->SMTPAuth   = true;                  
   $this->SMTPSecure = "ssl";                

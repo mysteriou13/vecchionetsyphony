@@ -83,11 +83,7 @@ if($_SERVER['HTTP_HOST'] == "localhost"){
 
 
 
-if($oublipass->isSubmitted() && $oublipass->isValid()){
-
-$this->liennewpass($oublipass->get('email')->getData(),$connect,$mail);
-
-}
+$this->oublipassword($connect,$mail,$oublipass,$log,$password);
 
 
    if($id == "deconnection" && $request->getMethod() != 'POST'){
@@ -131,6 +127,14 @@ $alldate = $p->getallcreateur("date",$session);
     }
 
 
+public function oublipassword($connect,$mail,$oublipass,$log,$password){
+
+if($oublipass->isSubmitted() && $oublipass->isValid()){
+
+$this->liennewpass($oublipass->get('email')->getData(),$connect,$mail,$log,$password);
+
+}
+}
 
   public function forminscription($forminscription,$connect,$log,$password){
 
@@ -226,7 +230,7 @@ $idparametre = "nextcloud";
 }
 
 
- public function liennewpass($oubli,$connect,$mail){
+ public function liennewpass($oubli,$connect,$mail,$log,$password){
 
 if($_SERVER['HTTP_HOST'] == "localhost"){
 
@@ -245,9 +249,9 @@ if($_SERVER['HTTP_HOST'] == "localhost"){
 
 $oublipassemail = $oubli;
 
-$searchmail = $connect->selectcount("COUNT(*)email ","membre","email",$oubli)['email'];
+$searchmail = $connect->selectcount("COUNT(*)email ","membre","email",$oubli,$log,$password)['email'];
 
-$tokenmail = $connect->selectcount("*","membre","email",$oublipassemail);
+$tokenmail = $connect->selectcount("*","membre","email",$oublipassemail,$log,$password);
 
 $token = $tokenmail['email'];
 
