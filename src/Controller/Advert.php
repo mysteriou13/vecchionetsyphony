@@ -70,18 +70,6 @@ $input = new input();
    $this->formlogin($formlogin,$connect,$session,$log,$password);
    $this->forminscription($forminscription,$connect,$log,$password);
   
-    
-if($_SERVER['HTTP_HOST'] == "localhost"){
-
- $domaine = "http://".$_SERVER['HTTP_HOST']."/my_project_name/public/";
-
-}else{
-
- $domaine ="http://".$_SERVER['HTTP_HOST']."/";
-
-} 
-
-
 
 $this->oublipassword($connect,$mail,$oublipass,$log,$password);
 
