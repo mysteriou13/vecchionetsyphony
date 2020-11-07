@@ -70,35 +70,7 @@ $input = new input();
    $this->formlogin($formlogin,$connect,$session,$log,$password);
    $this->forminscription($forminscription,$connect,$log,$password);
   
-     if($forminscription->isSubmitted() && $forminscription->isValid()) {
-   
-     $pseudo = $forminscription->get('login')->getData();
-     $pass = $forminscription->get('password')->getData();
-     $email = $forminscription->get('email')->getData();
-     
-    $selectpseudo =  $connect->selectcount("COUNT(*)pseudo ","membre","pseudo",$pseudo,$log,$password)['pseudo'];
-
-    $selectemail =  $connect->selectcount("COUNT(*)email ","membre","pseudo",$pseudo,$log,$password)['email'];
-
-  if($selectpseudo == 1){
-  $loginpris = " erreur pseudo pris";
-
-   }    
-
-  if($selectemail == 1){
- $emailpris = " erreur email pris";
-
-   }
-
-   if($selectpseudo == 0 && $selectemail == 0){ 
- 
-     $connect->inscription($pseudo,$pass,$email,$log,$password);
-   
-   }
-
-   }
-
-
+    
 if($_SERVER['HTTP_HOST'] == "localhost"){
 
  $domaine = "http://".$_SERVER['HTTP_HOST']."/my_project_name/public/";
