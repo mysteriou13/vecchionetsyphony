@@ -10,7 +10,11 @@
     private $email;  
     private $typeinput;
     private $check;
-       
+    private $nomcontact;
+    private $contactemail;
+    private $message;
+    private $suject;  
+
     public function getlogin()
     {
         return $this->login;
@@ -61,7 +65,57 @@
    $this->check = $check;
 
    }
- 
 
+     public function getnomcontact(){
+  
+    return  $this->nomcontact;
+
+     }
+  
+   public function setnomcontact($contactemail){
+
+   $this->nom = $contactemail;
+
+   }  
+
+    public function getcontactemail(){
+  
+    return  $this->contactemail;
+
+     }
+  
+   public function setcontactemail($contactemail){
+
+   $this->contactemail = $contactemail;
+
+   }  
+
+   public function getmessage(){
+  
+    return  $this->message;
+
+     }
+  
+   public function setmessage($message){
+
+   $this->message = $message;
+
+   }  
+ 
+   public function getsuject(){
+  
+    return  $this->suject;
+
+     }
+  
+   public function setsuject($suject){
+
+   $this->suject = $suject;
+
+   }  
+
+
+  
 }
+
 ?>

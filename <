@@ -5,10 +5,7 @@
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -16,8 +13,6 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-
-
 use App\Entity\input;
 use App\database\connect;
 use App\database\parametre;
@@ -39,15 +34,14 @@ $error = null;
 $input = new input();
 
  $formlogin = $this->fromlogin($input,$request);
-
- $oublipass = $this->oublipass($input,$request);
  
  $forminscription = $this->frominscription($input,$request);
 
  $formcontact = $this->fromcontact($input,$request);
 
+ $oublipass = $this->oublipass($input,$request);
 
-    
+  
      $pseudo = null;
      $pass = null;
      $loginpris = null;
@@ -76,14 +70,14 @@ $input = new input();
   $afficheparametre = $this->afficheparametre($session,$request,$p,$log,$password);
 
    $this->formlogin($formlogin,$connect,$session,$log,$password);
-
    $this->forminscription($forminscription,$connect,$log,$password);
-
-   $this->contact($formcontact,$mail);
+  
 
 $this->oublipassword($connect,$mail,$oublipass,$log,$password);
 
+
 $this->deconnect($id,$request,$session); 
+
 
 $allcreateur = $p->getallcreateur("pseudo",$session);
 
@@ -272,34 +266,16 @@ $mail->mails($oubli,"mot de pass oublier", $liennewpass);
 
  public function fromcontact($input,$request){
 
- $contact = $this->createFormBuilder($input, )
-      ->add('nomcontact' ,TextType::class, ['label' => 'nom'] )
-      ->add('suject' ,TextType::class, ['label' => 'sujet'] )
-      ->add('contactemail', EmailType::class, ['label' => 'adress mail'])
-      ->add('message',TextareaType::class, ['label' => null,  'attr' => ['style' => 'vertical-align: top;  width:300px; height:200px'], ])
-      ->add('connection', SubmitType::class) 
-      ->getForm();
-  
+ $contact = $this->createFormBuilder($input)
+      ->add(null ,TextType::class, ['label' => null])
+      ->add('contactemail', EmailType::class)
+      ->getForm() 
+     ;
+
   return $contact->handleRequest($request);
 
-}
-
- public function contact($contact,$mail){
-
-  if ($contact->isSubmitted() && $contact->isValid()) {
-
-
-    $nom = $contact->get('nomcontact')->getData();
-  
-    $sujet = $contact->get('suject')->getData();
-    $email = $contact->get('contactemail')->getData();
-    $message = $contact->get('message')->getData();
-
-    $mail->mails("elio007@hotmail.fr",$sujet,$message);
 
   }
-
-}
 
 public function fromlogin($input,$request){
 

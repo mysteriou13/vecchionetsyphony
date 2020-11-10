@@ -15,12 +15,8 @@ public function __construct(){
 
 
 public function mails($adress,$subject,$message){
-require_once("../admin/connect.php");  
-
 
  $Usermail = "admin@vecchionet.com";
-
-require_once("../admin/connectmail.php");  
 
   $this->IsSMTP();
   $this->SMTPAuth   = true;                  

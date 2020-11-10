@@ -1,4 +1,3 @@
-    {# templates/Advert/index.contact.twig #}
 
 {% extends "layout.html" %}
 
@@ -8,8 +7,38 @@
 {% block body %}
 
 
-contact
 
-{% endblock %}
+{{form_start(contact) }}
+
+    <table>
+
+   <caption id = "b3"> formulaire de contact</caption>
+
+ </br>
+
+    <tr>
+        <th>{{form_row(contact.nomcontact) }}  </th>
+    </tr>
+  <tr>
+        <th>{{form_row(contact.suject) }}  </th>
+    </tr>
+
+
+    <tr>
+        <th>{{form_row(contact.contactemail) }}</th>
+    </tr>
+  
+  <tr>
+        <th>{{form_row(contact.message) }}</th>
+   </tr>
+    
+   <tr>
+        <th>{{form_row(contact.connection) }}</th>
+    </tr>
+    
+     </table>
+  
+  {{form_end(contact) }}
+     {% endblock %}
 
 
