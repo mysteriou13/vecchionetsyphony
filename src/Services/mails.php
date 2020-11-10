@@ -42,9 +42,9 @@ public function mails($adress,$subject,$message){
   $this->AddReplyTo('admin@vecchionet.com', 'admin');
   $this->AddAddress($adress,"adress");
   $this->addAddress('test@test.com', 'admin');
-  $this->SetFrom('admin@vecchionet.com', 'mot de passe oublier');
+  $this->SetFrom('admin@vecchionet.com', $subject);
   $this->isHTML(true);
-  $this->Subject = 'Here is the subject';
+  $this->Subject = $subject;
   $this->Body  = $message;
   $this->Send();
 
