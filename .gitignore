@@ -9,7 +9,7 @@
 /var/
 /vendor/
 /admin/
-
+/.env
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###

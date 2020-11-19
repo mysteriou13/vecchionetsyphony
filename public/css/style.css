@@ -95,7 +95,7 @@ display:none;
 
 #error{
 
-color:white;
+background-color:blue; color:white; font-size:2em;  border-radius:30px; padding:0.5%; 
 
 }
 

@@ -73,9 +73,7 @@ public function allcreateur($col,$pseudo){
    public function login($pseudo,$pass,$session,$login,$password){
  
  $select = $this->selectcount("COUNT(*)pseudo ","membre","pseudo",$pseudo,$login,$password)['pseudo'];
-
-
-$valide = 0;
+ $valide = 2;
    
   if($select  == 1){
    $logpseudo = $this->selectcount("*","membre","pseudo",$pseudo,$login,
@@ -87,20 +85,24 @@ $password)['pseudo'];
 
 }else{
 
-
+$valide = 0;
 }
- 
-          if( $valide == 1){
+
+     if( $valide == 1){
 
        $session->set('username', $pseudo);
 
-
-         }else{
-
-        $error = "login ou mot de pass incorrect";
-
       }
-      }
+
+}
+
+if($select == 0){
+
+$valide = 0;
+
+}
+
+return $valide;
 
 }
   public function inscription($pseudo,$pass,$email,$log,$password){

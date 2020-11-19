@@ -71,12 +71,16 @@ $input = new input();
     $log = $connect->getlogin();
     $password = $connect->getpass();
 
+
    $p = new parametre($session->get('username'),$log,$password);     
 
   $afficheparametre = $this->afficheparametre($session,$request,$p,$log,$password);
 
-   $this->formlogin($formlogin,$connect,$session,$log,$password);
+$valide = 2;
+    
 
+ $valide = $this->formlogin($formlogin,$connect,$session,$log,$password); 
+ 
    $this->forminscription($forminscription,$connect,$log,$password);
 
    $this->contact($formcontact,$mail);
@@ -105,8 +109,7 @@ $alldate = $p->getallcreateur("date",$session);
 "createur"=>$createur, 
 "i"=>$i,
 "countnextcloud"=> $nbcreateur, "form" => $formlogin->createView(), 
-"oubli" => $oublipass->createView(),"erroroublicpass" => $erroroublicpass
-
+"oubli" => $oublipass->createView(),"erroroublicpass" => $erroroublicpass, "valide" => $valide
 ]);
 
     }
@@ -176,16 +179,18 @@ $this->liennewpass($oublipass->get('email')->getData(),$connect,$mail,$log,$pass
 
   public function formlogin($formlogin,$connect,$session,$log,$password){
 
+    $valide = 2;
+
    if ($formlogin->isSubmitted() && $formlogin->isValid()) {
 
     $pseudo = $formlogin->get('login')->getData();
     $pass = $formlogin->get('password')->getData();
 
+   $valide =  $connect->login($pseudo,$pass,$session,$log,$password);      
+
+    } 
  
-   $connect->login($pseudo,$pass,$session,$log,$password);  
-    
-    }
-  
+ return $valide;
 
   }
 
