@@ -1,7 +1,5 @@
-<?php 
-
-  namespace App\Controller;
-
+<?php
+    namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,19 +22,22 @@ use App\database\parametre;
 use App\Services\mails;
 
 
-class 	Advert extends AbstractController{
 
-/**
-*@Route("/{id}", name ="home")
-*
-*/
 
-  public function index(connect $connect,mails $mail,Request $request,SessionInterface $session,$id )
-    {
+class luck extends AbstractController 
 
-$error = null;
+{
 
-$input = new input();
+  /**
+  *  @Route("/{id}", name = "number" )
+  */
+
+    public function number(connect $connect,mails $mail,Request $request,SessionInterface $session,$id)    
+{
+
+    $error = null;
+
+ $input = new input();
 
  $formlogin = $this->fromlogin($input,$request);
 
@@ -109,7 +110,9 @@ $alldate = $p->getallcreateur("date",$session);
 "createur"=>$createur, 
 "i"=>$i,
 "countnextcloud"=> $nbcreateur, "form" => $formlogin->createView(), 
-"oubli" => $oublipass->createView(),"erroroublicpass" => $erroroublicpass, "valide" => $valide
+"oubli" => $oublipass->createView(),
+"erroroublicpass" => $erroroublicpass, "valide" => $valide
+
 ]);
 
     }
@@ -130,7 +133,9 @@ public function deconnect($id,$request,$session){
   }
 
 
-}
+
+   }
+
 
 public function oublipassword($connect,$mail,$oublipass,$log,$password){
 
@@ -346,6 +351,6 @@ return $oublipass->handleRequest($request);
   } 
 
 
-  }
 
+}
 ?>

@@ -9,20 +9,8 @@ require dirname(__DIR__).'/vendor/autoload.php';
 
 (new Dotenv())->bootEnv(dirname(__DIR__).'/.env');
 
-$mode = null;
 
-if($_SERVER['HTTP_HOST'] == "localhost"){
-
-$mode = "dev";
-
-}else{
-
-$mode = "prod";
-
-}
-
-
-$kernel = new Kernel($mode, true);
+$kernel = new Kernel($_SERVER['APP_ENV'], (bool) $_SERVER['APP_DEBUG']);
 $request = Request::createFromGlobals();
 $response = $kernel->handle($request);
 $response->send();
