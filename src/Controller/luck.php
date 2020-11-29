@@ -35,7 +35,18 @@ class luck extends AbstractController
     public function number(connect $connect,mails $mail,Request $request,SessionInterface $session,$id)    
 {
 
-    $error = null;
+ if($_SERVER['SERVER_NAME'] == "localhost"){
+
+ 
+ $domaine =  "http://".$_SERVER['SERVER_NAME']."/vecchionetsyphony"; 
+
+ }else{
+  
+  $domaine = "https://".$_SERVER['SERVER_NAME'];
+
+}
+  
+ $error = null;
 
  $input = new input();
 
@@ -111,7 +122,7 @@ $alldate = $p->getallcreateur("date",$session);
 "i"=>$i,
 "countnextcloud"=> $nbcreateur, "form" => $formlogin->createView(), 
 "oubli" => $oublipass->createView(),
-"erroroublicpass" => $erroroublicpass, "valide" => $valide
+"erroroublicpass" => $erroroublicpass, "valide" => $valide, "domaine" => $domaine
 
 ]);
 

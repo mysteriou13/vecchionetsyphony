@@ -7,7 +7,11 @@
   <title>{% block title %}Plateforme d'annonces{% endblock %}</title>
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
+  <link rel="stylesheet" href="{{domaine}}/node_modules/bootstrap/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
 <link href ="{{ asset('css/style.css') }}" type = "text/css" rel = "stylesheet">
+
 
 </head>
 
@@ -21,7 +25,6 @@
 </h1>
 
 </center>
-
 
 <div class = "divflex">
 
@@ -109,6 +112,8 @@ error  login ou de mot de pass  incorrect
 
     <script src="{{ asset('./script/parametre.js') }}"></script>
 
+    <script src="{{domaine}}/node_modules/jquery/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="{{domaine}}/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
 <footer>
 footer
