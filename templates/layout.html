@@ -26,7 +26,7 @@
 
 </center>
 
-<div class = "divflex">
+<div class = "d-flex justify-content-between flex-wrap">
 
 <div class = "divheader"> <a href  = "./index"> accueil </a> </div>
 
@@ -55,12 +55,12 @@
  
   {{ form_start(form) }}
 
-  <div id = "formconnection"  style = "display:flex">
+  <div id = "formconnection" class="form-row align-items-center" >
 <div>
- {{ form_row(form.login) }}
+ {{ form_row(form.login ) }}
 </div>
 
-<div>
+<div >
  {{ form_row(form.password) }}
 </div>
 
@@ -71,6 +71,8 @@
 <div>
 <label> &nbsp; <a href = "./oublipass">mot de pass oublier </a> </label>
 </div>
+
+    
 {% endif %}
 
 
@@ -86,6 +88,10 @@
 
 
    </header>
+
+ 
+  </div>
+</form>
 
 </br>
 

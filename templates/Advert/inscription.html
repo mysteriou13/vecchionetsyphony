@@ -14,26 +14,56 @@
 
 </br>
 
-<div id = "b5">
 
+</div>
+
+<div >
 
 {{form_start(inscription) }}
 <div>
-{{ form_row(inscription.login) }}
+
+<center>
+<label> login </label>
+</center>
+
+{{ form_row(inscription.login,  {'attr': {'class': 'form-control '}}   ) }}
 {{loginpris}}
 </div>
 
 <div>
-{{ form_row(inscription.password) }}
+
+<center>
+<label>mot de pass</label>
+</center>
+
+{{ form_row(inscription.password,  {'attr': {'class': 'form-control '}}  ) }}
 </div>
 
 <div>
-{{ form_row(inscription.email) }}
+
+<center>
+<label> email </label>
+</center>
+
+{{ form_row(inscription.email,  {'attr': {'class': 'form-control '}}  ) }}
 {{ emailpris }}
 </div>
 
 <div>
-{{ form_row(inscription.check) }}
+
+<center>
+<label> accepter les CGU</label>
+</center>
+
+{{ form_row(inscription.check,  {'attr': {'class': 'form-control '}}) }}
+
+</div>
+
+<div>
+<center>
+{{ form_row(inscription.submit,  { 'label': 'inscription' } , {'attr': {'class': 'btn btn-primary' }}) }}
+</center>
+
 </div>
 
 {{form_end(inscription)  }}

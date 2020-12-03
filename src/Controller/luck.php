@@ -26,6 +26,7 @@ use App\Services\mails;
 
 class luck extends AbstractController 
 
+
 {
 
   /**
@@ -337,11 +338,11 @@ return $login->handleRequest($request);
  public function frominscription($input,$request){
 
   $inscription = $this->createFormBuilder($input)
-            ->add('login', TextType::class)
-            ->add('password', PasswordType::class)
-            ->add('email', EmailType::class)
-            ->add('check', CheckboxType::class, ['label' =>'accepter les CGU'] )
-            ->add('inscription', SubmitType::class)
+            ->add('login', TextType::class, ['label' => ' '] ) 
+            ->add('password', PasswordType::class, ['label' => ' '])
+            ->add('email', EmailType::class, ['label' => ' '])
+            ->add('check', CheckboxType::class, ['label' =>' '] )
+            ->add('submit', SubmitType::class)
             ->getForm();
  
    return $inscription->handleRequest($request);

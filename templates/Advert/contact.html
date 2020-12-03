@@ -8,36 +8,35 @@
 
 
 
+
+<center>
 {{form_start(contact) }}
 
-    <table>
-
-   <caption id = "b3"> formulaire de contact</caption>
-
- </br>
-
-    <tr>
-        <th>{{form_row(contact.nomcontact) }}  </th>
-    </tr>
-  <tr>
-        <th>{{form_row(contact.suject) }}  </th>
-    </tr>
-
-
-    <tr>
-        <th>{{form_row(contact.contactemail) }}</th>
-    </tr>
+    <div>
+        {{form_row(contact.nomcontact, {'attr': {'class': 'form-control' } } ) }}  
+    </div>
   
-  <tr>
-        <th>{{form_row(contact.message) }}</th>
-   </tr>
-    
-   <tr>
-        <th>{{form_row(contact.connection) }}</th>
-    </tr>
-    
-     </table>
+   <div>
+      {{form_row(contact.suject,  {'attr': {'class': 'form-control'}} ) }} 
+    </div>
+
+
+    <div>
+        {{form_row(contact.contactemail, {'attr': {'class': 'form-control'}}) }}
+    </div>
   
+  <div>
+        {{form_row(contact.message, {'attr': {'class': 'form-control'}})  }}
+   </div>
+    
+   <div>
+        {{form_row(contact.connection ) }}
+    </div>
+    
+</center> 
+
+
+ 
   {{form_end(contact) }}
      {% endblock %}
 

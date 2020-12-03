@@ -14,6 +14,7 @@
     private $contactemail;
     private $message;
     private $suject;  
+    private $submit;
 
     public function getlogin()
     {
@@ -114,8 +115,17 @@
 
    }  
 
-
+  public function getsubmit(){
+ 
+  return $this->submit;
   
-}
+ }
+ 
+  public function setsubmit(){
 
+  $this->submit = $submit;
+  
+  }
+
+ }
 ?>
